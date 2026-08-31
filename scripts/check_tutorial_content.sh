@@ -5,12 +5,12 @@ set -euo pipefail
 missing=0
 
 for file in docs/0[2-9]-*/*.md docs/10-*/*.md docs/11-*/*.md; do
-  if ! rg -q '^#{1,6} .*练习' "$file"; then
+  if ! grep -Eq '^#{1,6} .*练习' "$file"; then
     printf '缺少练习：%s\n' "$file"
     missing=1
   fi
 
-  if ! rg -q '^#{1,6} .*资料|^#{1,6} .*参考' "$file"; then
+  if ! grep -Eq '^#{1,6} .*(资料|参考)' "$file"; then
     printf '缺少资料来源：%s\n' "$file"
     missing=1
   fi
@@ -20,9 +20,9 @@ if (( missing != 0 )); then
   exit 1
 fi
 
-if rg -n \
+if grep -REn --include='*.md' \
   '50 ?元|50元|40 ?元|40元|MONTHLY_BUDGET_CNY|budget_remaining|费用上限|成本上限' \
-  docs -g '*.md'; then
+  docs; then
   printf '发现与“无固定 API 金额上限”冲突的内容。\n'
   exit 1
 fi
@@ -30,7 +30,7 @@ fi
 check_milestone() {
   milestone="$1"
   expected="$2"
-  if ! rg -q "$expected" docs -g "*${milestone}*.md"; then
+  if ! grep -REq --include="*${milestone}*.md" "$expected" docs; then
     printf '%s 的里程碑周数缺失或错误，应为：%s\n' "$milestone" "$expected"
     exit 1
   fi
