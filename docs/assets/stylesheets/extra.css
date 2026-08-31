@@ -1,0 +1,27 @@
+:root {
+  --md-text-font: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --md-code-font: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.md-typeset h2 {
+  margin-top: 2.2em;
+}
+
+.md-typeset table:not([class]) {
+  font-size: 0.72rem;
+}
+
+.md-typeset code {
+  word-break: normal;
+}
+
+.md-footer__link {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+}
+
