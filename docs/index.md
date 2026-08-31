@@ -13,6 +13,9 @@
 - 构建可引用、可拒答、可评测的 RAG 知识系统；
 - 使用 LangSmith 完成 Trace、Dataset、Experiment 和回归评测；
 - 实现 MCP 工具接入、权限控制、人工审批、安全防护和审计；
+- 使用 SQLAlchemy 2 与 Alembic 管理 Agent 数据、事务和 Schema 演进；
+- 实现 OAuth/OIDC 接入边界、RBAC、Scope、资源级授权和多租户隔离；
+- 使用 OpenTelemetry、SLO 和负载测试定位跨服务性能与可靠性问题；
 - 控制模型成本、延迟、循环次数、重试与失败恢复；
 - 让 Python Agent 服务与 Java 业务服务通过明确的 API 和权限边界协作；
 - 交付可运行、可测试、可演示、可解释取舍的企业级项目。
@@ -128,6 +131,7 @@
 - [24 周学习计划](01-总览与使用方式/02-24周学习计划.md)
 - [企业级项目蓝图](01-总览与使用方式/03-企业级项目蓝图.md)
 - [完整教程目录](01-总览与使用方式/04-完整教程目录.md)
+- [内容自检与补充记录](01-总览与使用方式/07-内容自检与补充记录.md)
 - [第一课：学习环境与第一个模型网关](02-Python-Agent后端基础/01-学习环境与第一个模型网关.md)
 - [LLM 应用与原生 Agent](03-LLM应用与原生Agent/01-LLM应用开发必需原理.md)
 - [LangChain 与单 Agent](04-LangChain与单Agent/01-LangChain当前架构与学习边界.md)
@@ -135,6 +139,10 @@
 - [LangGraph 有状态工作流](06-LangGraph有状态工作流/01-为什么需要图工作流.md)
 - [LangSmith 评测与可观测性](07-LangSmith评测与可观测性/01-Trace-Run与Thread.md)
 - [MCP、安全与工程化](08-MCP安全与工程化/01-MCP架构与协议心智模型.md)
+- [SQLAlchemy 与 Alembic 补缺](08-MCP安全与工程化/08-SQLAlchemy异步持久化与Alembic迁移.md)
+- [RBAC 与多租户补缺](08-MCP安全与工程化/09-身份认证RBAC与多租户隔离.md)
+- [MCP Streamable HTTP 与 OAuth](08-MCP安全与工程化/10-MCP-Streamable-HTTP与OAuth授权.md)
+- [OpenTelemetry、SLO 与负载测试](08-MCP安全与工程化/11-OpenTelemetry-SLO与负载测试.md)
 - [Java 业务服务集成](09-Java业务服务集成/01-AI服务与业务服务边界.md)
 - [企业级实战项目](10-企业级实战项目/01-需求领域模型与用户故事.md)
 - [面试准备](11-面试准备/01-西安岗位检索与JD能力映射.md)

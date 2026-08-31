@@ -16,6 +16,9 @@
 - 跨租户、无审批写入、重复工单三个指标均为 0。
 - P95、每成功任务成本和费用异常增长告警可证明；无教程金额上限。
 - 六类故障注入都有安全终态。
+- 数据库迁移可重建；跨租户、错误 Scope 与篡改 Thread 测试为 0 成功。
+- OpenTelemetry Trace 可跨 Python Agent、Java Tool 和数据库关联。
+- Fake Model 下完成 Smoke/Average Load、慢 SSE 和并发幂等场景。
 
 ## 3. 工程门禁
 

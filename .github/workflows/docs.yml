@@ -36,6 +36,9 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v6
 
+      - name: Check tutorial content contracts
+        run: bash scripts/check_tutorial_content.sh
+
       - name: Build documentation
         run: mkdocs build --strict
 

@@ -26,9 +26,9 @@ State Schema 变化需迁移旧 Checkpoint；Prompt 或 Tool Schema 变化也要
 
 ## 4. 版本矩阵模板
 
-| 日期 | Python | LangChain | LangGraph | LangSmith SDK | MCP Spec/SDK | 模型 | 状态 |
-|---|---|---|---|---|---|---|---|
-| 2026-08-31 | 3.12 | 1.x | 1.x | 锁文件为准 | ADR 为准 | 配置为准 | 课程基线 |
+| 日期 | Python | LangChain | LangGraph | SQLAlchemy/Alembic | LangSmith SDK | MCP Spec/SDK | 模型 | 状态 |
+|---|---|---|---|---|---|---|---|---|
+| 2026-08-31 | 3.12 | ≥1.1,<2 | ≥1.1,<2 | 2.x/1.x | 锁文件为准 | 2025-11-25/锁文件 | 配置为准 | 课程基线 |
 
 ## 5. 练习与答案
 
@@ -45,4 +45,5 @@ State Schema 变化需迁移旧 Checkpoint；Prompt 或 Tool Schema 变化也要
 - [LangChain Versioning](https://docs.langchain.com/oss/python/versioning)
 - [LangChain Releases](https://github.com/langchain-ai/langchain/releases)
 - [LangGraph Releases](https://github.com/langchain-ai/langgraph/releases)
-
+- [MCP Specification](https://modelcontextprotocol.io/specification/2025-11-25/)
+- [SQLAlchemy Releases](https://docs.sqlalchemy.org/en/20/changelog/)

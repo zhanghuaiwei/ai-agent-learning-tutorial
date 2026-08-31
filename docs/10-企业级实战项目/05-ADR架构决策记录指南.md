@@ -42,5 +42,4 @@ ADR 记录当时上下文，不要求“永远正确”。被数据推翻时新�
 
 ## 4. 验收与资料
 
-至少 8 份 ADR，每份有证据或明确待验证项。参考 [ADR GitHub](https://adr.github.io/)、[AWS ADR 指南](https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/welcome.html)。
-
+至少 8 份 ADR，每份有证据或明确待验证项。参考 [ADR GitHub](https://adr.github.io/)、[AWS ADR 流程](https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html)。
