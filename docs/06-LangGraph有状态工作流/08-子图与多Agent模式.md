@@ -12,7 +12,7 @@
 - Handoff：当前 Agent 把对话控制权交给另一个。
 - Parallel specialists：并行生成多个专业判断，再由确定性规则/聚合器合并。
 
-每增加一个 Agent，都要新增独立 Prompt、工具权限、数据集、终止条件、上下文传递和成本预算。若只是代码复用，用普通函数或子图即可。
+每增加一个 Agent，都要新增独立 Prompt、工具权限、数据集、终止条件、上下文传递和成本观测。若只是代码复用，用普通函数或子图即可。
 
 ## 3. 项目选择
 
@@ -31,4 +31,3 @@
 ## 5. 验收与资料
 
 每个拆分都有上下文、权限或可测试性理由。参考 [Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs)、[Multi-agent](https://docs.langchain.com/oss/python/langchain/multi-agent)。
-

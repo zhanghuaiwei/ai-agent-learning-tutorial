@@ -49,7 +49,7 @@ INCIDENT：出现调用风暴或失控循环，按可靠性策略限流/熔断�
 
 **答案：**不是。没有消费上限不等于没有可靠性边界。循环、异常重试或攻击造成的调用风暴应按限流、Deadline 和熔断策略停止；正常且有价值的开发与评测不受累计金额限制。
 
-## 官方价格页
+## 6. 资料来源：官方价格页
 
 - [DeepSeek Pricing](https://api-docs.deepseek.com/quick_start/pricing)
 - [阿里云百炼模型价格](https://help.aliyun.com/zh/model-studio/model-pricing)

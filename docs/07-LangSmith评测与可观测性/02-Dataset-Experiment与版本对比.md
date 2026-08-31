@@ -12,7 +12,7 @@
 
 每次实验只改变一个主要变量，记录基线和候选：质量、轨迹、延迟、Token、费用、安全。模型输出有随机性，对关键候选重复运行 2～3 次，查看方差而非只看均值。
 
-发布门槛应包含“不退化”规则，例如总体任务成功不下降、越权始终为 0、P95 不超预算、成本增幅可解释。
+发布门槛应包含“不退化”规则，例如总体任务成功不下降、越权始终为 0、P95 不超过 SLO 目标、成本增幅可解释。
 
 ## 3. 项目任务
 
@@ -31,4 +31,3 @@
 ## 5. 验收与资料
 
 实验可重跑，参数和数据版本完整。参考 [Evaluation](https://docs.langchain.com/langsmith/evaluation)、[Manage datasets](https://docs.langchain.com/langsmith/manage-datasets)、[Run an evaluation](https://docs.langchain.com/langsmith/evaluate-llm-application)。
-

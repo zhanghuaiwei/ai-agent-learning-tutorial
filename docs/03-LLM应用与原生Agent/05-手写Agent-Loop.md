@@ -11,10 +11,10 @@ while step < max_steps and deadline 未到:
   若为最终答案：验证并返回
   若为工具调用：校验 -> 授权 -> 执行 -> 记录 Tool Message
   否则：受控失败
-超过步数/预算/期限：停止并说明
+超过步数/Token 上限/期限：停止并说明
 ```
 
-停止条件至少包括：最终答案、最大步数、总时间、Token/费用预算、连续相同工具调用、用户取消、不可恢复错误、等待人工批准。
+停止条件至少包括：最终答案、最大步数、总时间、Token 上限、连续相同工具调用、用户取消、不可恢复错误、等待人工批准。费用只做 Usage 记录、单位任务分析和异常增长告警，不以教程累计金额终止正常学习调用。
 
 ## 2. 防失控设计
 
@@ -41,4 +41,3 @@ while step < max_steps and deadline 未到:
 ## 5. 验收与资料
 
 循环永远有界；未知工具不可执行；每步可观测；故障有明确终态。参考 [LangChain Agents](https://docs.langchain.com/oss/python/langchain/agents)、[OpenAI Agents 指南](https://developers.openai.com/api/docs/guides/latest-model)。
-
