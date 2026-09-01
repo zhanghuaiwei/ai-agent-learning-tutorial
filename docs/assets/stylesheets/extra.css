@@ -1,6 +1,87 @@
 :root {
   --md-text-font: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   --md-code-font: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  --tutorial-nav-border: color-mix(in srgb, var(--md-default-fg-color) 18%, transparent);
+  --tutorial-nav-hover: color-mix(in srgb, var(--md-accent-fg-color) 9%, transparent);
+  --tutorial-nav-active: color-mix(in srgb, var(--md-accent-fg-color) 16%, transparent);
+}
+
+/*
+ * 课程有 12 个一级模块、100+ 篇文档。一级模块放在顶部标签栏时会横向
+ * 溢出，并把完整目录从左侧栏移走。这里让左侧栏承担“整套课程导航”，
+ * 模块默认折叠、当前模块展开，右侧栏继续只显示“当前页面目录”。所有
+ * 选择器都限定在 primary sidebar，避免影响右侧 TOC。
+ */
+@media screen and (min-width: 76.25em) {
+  .md-grid {
+    max-width: 90rem;
+  }
+
+  .md-sidebar--primary {
+    width: 16rem;
+  }
+}
+
+.md-sidebar--primary .md-nav--primary > .md-nav__title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.md-sidebar--primary .md-nav--primary > .md-nav__list {
+  padding-top: 0.35rem;
+}
+
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item {
+  margin: 0.12rem 0;
+}
+
+.md-sidebar--primary .md-nav__item--section > .md-nav__link,
+.md-sidebar--primary .md-nav__item--nested > .md-nav__link {
+  border-radius: 0.25rem;
+  font-weight: 700;
+}
+
+.md-sidebar--primary .md-nav[data-md-level="1"] > .md-nav__list {
+  border-left: 1px solid var(--tutorial-nav-border);
+  margin-left: 0.48rem;
+  padding-left: 0.48rem;
+}
+
+.md-sidebar--primary .md-nav[data-md-level="1"] .md-nav__link {
+  border-radius: 0.24rem;
+  line-height: 1.45;
+  margin-top: 0.08rem;
+  padding: 0.3rem 0.45rem;
+}
+
+.md-sidebar--primary .md-nav__link:hover,
+.md-sidebar--primary .md-nav__link:focus-visible {
+  background: var(--tutorial-nav-hover);
+}
+
+.md-sidebar--primary .md-nav__link--active {
+  background: var(--tutorial-nav-active);
+  box-shadow: inset 0.14rem 0 var(--md-accent-fg-color);
+  font-weight: 700;
+  padding-left: 0.62rem;
+}
+
+.md-sidebar--primary .md-nav__icon {
+  border-radius: 50%;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.md-sidebar--primary .md-nav__link:hover .md-nav__icon {
+  background: var(--tutorial-nav-hover);
+}
+
+/* 抽屉模式仍保留层级线，但收紧间距，避免小屏目录显得拥挤。 */
+@media screen and (max-width: 76.234375em) {
+  .md-sidebar--primary .md-nav[data-md-level="1"] > .md-nav__list {
+    margin-left: 0.35rem;
+    padding-left: 0.4rem;
+  }
 }
 
 .md-typeset h1 {
@@ -24,4 +105,3 @@
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
 }
-
