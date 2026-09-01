@@ -185,7 +185,7 @@ class DifyFaultWorkflow:
 
 对同一批 20 条 Fault Cases 跑 Dify 与 LangGraph 版本，保持模型、Prompt、知识数据和 Tool 语义尽量一致。比较：
 
-第 10 周先完成 Dify 与手写/LangChain 版的初步对照；第 18 周学完 LangGraph 后复用同一 Dataset 完成本节，不提前复制尚未理解的 Graph 实现。
+完成 G2 后先做 Dify 与手写/LangChain 版的初步对照；通过 G4 LangGraph 门槛后复用同一 Dataset 完成本节，不提前复制尚未理解的 Graph 实现。学习用时由实验结果决定。
 
 | 指标 | Dify | LangGraph |
 | --- | --- | --- |
