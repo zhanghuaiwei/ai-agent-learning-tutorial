@@ -16,6 +16,31 @@ for file in docs/0[2-9]-*/*.md docs/10-*/*.md docs/11-*/*.md; do
   fi
 done
 
+job_audit_chapters=(
+  "docs/01-总览与使用方式/08-面向2027招聘的岗位能力再审计.md"
+  "docs/02-Python-Agent后端基础/07-Redis任务队列与后台作业可靠性.md"
+  "docs/03-LLM应用与原生Agent/07-Transformer模型推理微调与选型边界.md"
+  "docs/04-LangChain与单Agent/08-Dify工作流与代码框架选型.md"
+  "docs/08-MCP安全与工程化/06-Docker-CI与部署设计.md"
+  "docs/10-企业级实战项目/09-从需求澄清到上线的交付评审.md"
+  "docs/11-面试准备/05-Python后端与计算机基础题.md"
+  "docs/11-面试准备/08-岗位证据矩阵简历筛选与投递门槛.md"
+)
+
+for file in "${job_audit_chapters[@]}"; do
+  if [[ ! -f "$file" ]]; then
+    printf '岗位再审计必需章节缺失：%s\n' "$file"
+    missing=1
+    continue
+  fi
+
+  line_count=$(wc -l < "$file" | tr -d ' ')
+  if (( line_count < 120 )); then
+    printf '岗位再审计章节深度不足（少于 120 行）：%s，当前=%s\n' "$file" "$line_count"
+    missing=1
+  fi
+done
+
 if (( missing != 0 )); then
   exit 1
 fi

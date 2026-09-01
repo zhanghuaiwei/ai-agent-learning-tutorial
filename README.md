@@ -1,6 +1,6 @@
 # AI Agent 应用开发工程师学习教程
 
-一套面向有前端开发经验、正在转型 AI Agent 应用开发工程师的 24 周中文教程。主线覆盖 Python、LangChain、LangGraph、RAG、LangSmith、MCP、评测、安全、工程化和企业业务集成。
+一套面向有前端开发经验、正在转型 AI Agent 应用开发工程师的 24 周中文教程。内容由当前岗位要求反推，主线覆盖 Python、LangChain、LangGraph、RAG、LangSmith、MCP、Redis/任务队列、评测、安全、部署和企业业务集成。
 
 ## 在线阅读
 
@@ -10,8 +10,9 @@
 
 ## 核心模块
 
-- LangChain：7 篇，覆盖当前 1.x 架构、Model/Message/Tool、`create_agent`、Middleware、流式与可靠性。
+- LangChain：8 篇，覆盖当前 1.x 架构、Model/Message/Tool、`create_agent`、Middleware、流式、可靠性和 Dify 对照选型。
 - LangGraph：10 篇，覆盖 State/Node/Edge/Reducer、Command、Checkpoint、Memory、Interrupt、幂等恢复、子图和 Time Travel。
+- 岗位专项：当前 JD 再审计、Python/SQL/算法基础、证据矩阵、项目深挖和系统设计。
 - 企业项目：“智维 Agent——工业设备维护知识与工单协同平台”。
 - 学习周期：24 周，每周约 15 小时，目标投递时间为 2027 年 2 月底。
 
@@ -39,4 +40,3 @@ mkdocs build --strict
 ## License
 
 [MIT](LICENSE)
-

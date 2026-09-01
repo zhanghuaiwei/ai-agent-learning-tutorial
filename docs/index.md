@@ -8,17 +8,22 @@
 
 - 将真实业务拆分为确定性业务流程与非确定性 Agent 决策流程；
 - 使用 Python、FastAPI、Pydantic 和异步编程构建 Agent 服务；
+- 使用 Redis/任务队列、Outbox 和幂等 Worker 承载文档摄取与长任务；
 - 理解并实现 Prompt、Context、Structured Output 和 Tool Calling；
+- 理解 Transformer、KV Cache、SFT/LoRA 与云 API/自托管推理的选型边界；
 - 使用 LangChain 构建常规 Agent，使用 LangGraph 编排有状态工作流；
+- 使用 Dify 完成受控工作流，并能与 LangGraph 做治理和迁移对照；
 - 构建可引用、可拒答、可评测的 RAG 知识系统；
 - 使用 LangSmith 完成 Trace、Dataset、Experiment 和回归评测；
 - 实现 MCP 工具接入、权限控制、人工审批、安全防护和审计；
 - 使用 SQLAlchemy 2 与 Alembic 管理 Agent 数据、事务和 Schema 演进；
 - 实现 OAuth/OIDC 接入边界、RBAC、Scope、资源级授权和多租户隔离；
 - 使用 OpenTelemetry、SLO 和负载测试定位跨服务性能与可靠性问题；
+- 使用 Linux 诊断、Docker CI、SSE 代理和 Kubernetes 应用概念完成部署排障；
 - 控制模型成本、延迟、循环次数、重试与失败恢复；
 - 让 Python Agent 服务与 Java 业务服务通过明确的 API 和权限边界协作；
 - 交付可运行、可测试、可演示、可解释取舍的企业级项目。
+- 根据真实 JD 建立岗位证据矩阵，诚实区分应用开发、算法和推理 Infra 能力。
 
 ## 已确认约束
 
@@ -53,6 +58,7 @@
 模型对话
   → 结构化输出
   → 工具调用
+  → 异步摄取与任务队列
   → 设备手册 RAG
   → 故障任务状态图
   → 工单人工审批
@@ -132,9 +138,13 @@
 - [企业级项目蓝图](01-总览与使用方式/03-企业级项目蓝图.md)
 - [完整教程目录](01-总览与使用方式/04-完整教程目录.md)
 - [内容自检与补充记录](01-总览与使用方式/07-内容自检与补充记录.md)
+- [面向 2027 招聘的岗位能力再审计](01-总览与使用方式/08-面向2027招聘的岗位能力再审计.md)
 - [第一课：学习环境与第一个模型网关](02-Python-Agent后端基础/01-学习环境与第一个模型网关.md)
+- [Redis、任务队列与后台作业](02-Python-Agent后端基础/07-Redis任务队列与后台作业可靠性.md)
 - [LLM 应用与原生 Agent](03-LLM应用与原生Agent/01-LLM应用开发必需原理.md)
+- [Transformer、微调与推理边界](03-LLM应用与原生Agent/07-Transformer模型推理微调与选型边界.md)
 - [LangChain 与单 Agent](04-LangChain与单Agent/01-LangChain当前架构与学习边界.md)
+- [Dify 与代码框架选型](04-LangChain与单Agent/08-Dify工作流与代码框架选型.md)
 - [RAG 与知识系统](05-RAG与知识系统/01-RAG系统全景与失败分类.md)
 - [LangGraph 有状态工作流](06-LangGraph有状态工作流/01-为什么需要图工作流.md)
 - [LangSmith 评测与可观测性](07-LangSmith评测与可观测性/01-Trace-Run与Thread.md)
@@ -143,9 +153,12 @@
 - [RBAC 与多租户补缺](08-MCP安全与工程化/09-身份认证RBAC与多租户隔离.md)
 - [MCP Streamable HTTP 与 OAuth](08-MCP安全与工程化/10-MCP-Streamable-HTTP与OAuth授权.md)
 - [OpenTelemetry、SLO 与负载测试](08-MCP安全与工程化/11-OpenTelemetry-SLO与负载测试.md)
+- [Linux、Docker、CI 与部署排障](08-MCP安全与工程化/06-Docker-CI与部署设计.md)
 - [Java 业务服务集成](09-Java业务服务集成/01-AI服务与业务服务边界.md)
 - [企业级实战项目](10-企业级实战项目/01-需求领域模型与用户故事.md)
+- [从需求澄清到上线的交付评审](10-企业级实战项目/09-从需求澄清到上线的交付评审.md)
 - [面试准备](11-面试准备/01-西安岗位检索与JD能力映射.md)
+- [岗位证据矩阵与投递门槛](11-面试准备/08-岗位证据矩阵简历筛选与投递门槛.md)
 - [官方资料索引](99-附录/01-官方资料索引.md)
 
 ## 资料来源原则
