@@ -1,6 +1,6 @@
 # Spring AI 与 Java Agent 生态岗位适配
 
-> 目标：在 Python Agent 主线完成后，利用已有 Spring Boot CRUD 经验掌握 Spring AI 的 Model、ChatClient、Advisor、Tool、RAG、MCP 和 Observability 边界；不重复建设第二套完整主项目。
+> 目标：在 Python Agent 主线完成后，掌握 Spring AI 的 Model、ChatClient、Advisor、Tool、RAG、MCP 和 Observability 边界；不重复建设第二套完整主项目。
 
 ## 1. 为什么补这一章但不改双主线
 

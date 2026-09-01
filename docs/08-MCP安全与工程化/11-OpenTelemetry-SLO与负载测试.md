@@ -156,7 +156,7 @@ Agent 的“成功”不能只看 HTTP 200。以下都要明确分类：
 
 ## 9. k6 最小场景
 
-你有前端经验，可以直接使用 JavaScript 编写协议级测试：
+可以直接使用 JavaScript 编写协议级测试：
 
 ```javascript
 import http from "k6/http";

@@ -17,7 +17,7 @@ for file in docs/0[2-9]-*/*.md docs/10-*/*.md docs/11-*/*.md; do
 done
 
 job_audit_chapters=(
-  "docs/01-总览与使用方式/08-面向2027招聘的岗位能力再审计.md"
+  "docs/01-总览与使用方式/08-岗位能力再审计.md"
   "docs/02-Python-Agent后端基础/07-Redis任务队列与后台作业可靠性.md"
   "docs/03-LLM应用与原生Agent/07-Transformer模型推理微调与选型边界.md"
   "docs/04-LangChain与单Agent/08-Dify工作流与代码框架选型.md"
