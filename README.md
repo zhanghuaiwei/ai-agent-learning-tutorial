@@ -1,4 +1,4 @@
-# AI Agent 应用开发工程师学习教程
+# Agent 应用工程指南
 
 一套面向有前端开发经验、正在转型 AI Agent 应用开发工程师的完整中文教程。课程由当前岗位要求反推，以能力门槛和项目证据决定是否完成，不受 24 周范围限制；主线覆盖 Python、LangChain、LangGraph、RAG、LangSmith、MCP、Redis/任务队列、评测、安全、部署和企业业务集成。
 
