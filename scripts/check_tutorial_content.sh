@@ -16,6 +16,21 @@ for file in docs/0[2-9]-*/*.md docs/10-*/*.md docs/11-*/*.md; do
   fi
 done
 
+# 深度章节必须有阅读前置声明（各阶段第 1 章为起点，豁免）。
+for file in docs/0[2-9]-*/*.md docs/1[0-1]-*/*.md; do
+  base=$(basename "$file")
+  if [[ "$base" == 01-* ]]; then
+    continue
+  fi
+  line_count=$(wc -l < "$file" | tr -d ' ')
+  if (( line_count >= 120 )); then
+    if ! head -n 50 "$file" | grep -q '阅读前置\|本章从哪里开始'; then
+      printf '深度章节缺少阅读前置声明：%s\n' "$file"
+      missing=1
+    fi
+  fi
+done
+
 # 目录状态标记与实际深度一致性：
 # 目录中标记为 已完成/里程碑 的章节，正文深度不得低于 120 行（大纲章节不受限）。
 catalog="docs/01-总览与使用方式/04-完整教程目录.md"

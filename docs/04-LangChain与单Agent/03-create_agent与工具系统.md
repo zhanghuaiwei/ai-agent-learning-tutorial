@@ -2,6 +2,8 @@
 
 > 预计 8 小时｜产出：设备查询与工单草稿单 Agent。
 
+> **阅读前置**：本章是 LangChain 主线的核心实现章。默认读者已完成第 2 阶段 M0——本章的工具直接复用 M0 建立的 `tools.py` 三个契约（`search_manual`、`get_alarm`、`create_work_order_draft`）与 Pydantic Schema；还需要第 3 阶段 Function Calling 的概念（该阶段正文当前为大纲态，可在学习本章时对照手写实现回看）。本阶段第 1～2 章（架构与核心抽象）扩写前，本章可先作为"框架如何表达我们已有的契约"的对照实验。
+
 ## 1. 最小实现
 
 ```python

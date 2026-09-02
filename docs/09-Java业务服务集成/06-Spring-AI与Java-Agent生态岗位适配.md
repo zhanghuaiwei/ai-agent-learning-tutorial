@@ -2,6 +2,8 @@
 
 > 目标：在 Python Agent 主线完成后，掌握 Spring AI 的 Model、ChatClient、Advisor、Tool、RAG、MCP 和 Observability 边界；不重复建设第二套完整主项目。
 
+> **阅读前置**：Java 增强线专题，位于 Python 主线（M0～M5）之后。前置要求：Spring Boot 基础与"统一契约、自有协议"的主线经验——本章的核心价值正是把这套思想映射到 Java 生态。不依赖本阶段第 1～5 章正文。
+
 ## 1. 为什么补这一章但不改双主线
 
 企业 AI 应用岗位可能写：

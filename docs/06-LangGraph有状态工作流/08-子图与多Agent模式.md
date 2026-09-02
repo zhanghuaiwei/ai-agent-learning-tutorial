@@ -2,6 +2,8 @@
 
 > 目标：以职责、上下文、权限和评测证据决定拆分；掌握 Subgraph、Router、Supervisor、Handoff 和并行专家，而不是追求 Agent 数量。
 
+> **阅读前置**：多 Agent 架构专题。前置正文（本阶段第 1～7 章：State/Node/Edge、Command、Checkpoint、Interrupt 等）当前为大纲态——本章 §1 的概念分层表可独立阅读，动手实验需先补齐前置章节与 M0～M3。M4 验收（本阶段第 10 章）以本章为设计基础。
+
 ## 1. 先区分函数、Tool、子图和 Agent
 
 | 组件 | 适用 | 是否由模型自主决定 |
