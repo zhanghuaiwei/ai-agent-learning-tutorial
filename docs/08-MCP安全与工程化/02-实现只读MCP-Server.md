@@ -38,5 +38,5 @@
 
 ## 6. 验收与资料
 
-无通用执行能力、无跨租户数据、契约测试通过。参考 [MCP Server Overview](https://modelcontextprotocol.io/specification/2025-06-18/server/index)、[MCP Tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)、[Python SDK](https://github.com/modelcontextprotocol/python-sdk)。
+无通用执行能力、无跨租户数据、契约测试通过。参考 [MCP Server Overview](https://modelcontextprotocol.io/specification/2025-11-25/server/index)、[MCP Tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)、[Python SDK](https://github.com/modelcontextprotocol/python-sdk)。
 

@@ -186,7 +186,7 @@
 - [LangChain Agents](https://docs.langchain.com/oss/python/langchain/agents)
 - [LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)
 - [LangSmith Evaluation Concepts](https://docs.langchain.com/langsmith/evaluation-concepts)
-- [MCP Architecture](https://modelcontextprotocol.io/specification/2025-06-18/architecture)
+- [MCP Architecture](https://modelcontextprotocol.io/specification/2025-11-25/architecture)
 - [千问 Function Calling](https://help.aliyun.com/zh/model-studio/qwen-function-calling)
 - [DeepSeek Tool Calls](https://api-docs.deepseek.com/guides/tool_calls/)
 

@@ -40,5 +40,5 @@
 
 - [LangChain Agents](https://docs.langchain.com/oss/python/langchain/agents)
 - [LangGraph Overview](https://docs.langchain.com/oss/python/langgraph/overview)
-- [MCP Architecture](https://modelcontextprotocol.io/specification/2025-06-18/architecture)
+- [MCP Architecture](https://modelcontextprotocol.io/specification/2025-11-25/architecture)
 

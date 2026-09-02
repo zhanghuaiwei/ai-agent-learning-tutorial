@@ -130,6 +130,13 @@ if grep -REn --include='*.md' \
   exit 1
 fi
 
+# MCP 规范课程基线固定为 2025-11-25（见附录“版本迁移与过时 API”），
+# 禁止正文链接旧版 2025-06-18 规范，防止跨版本示例混用。
+if grep -REn --include='*.md' 'specification/2025-06-18' docs; then
+  printf '发现指向旧版 MCP 规范（2025-06-18）的链接，课程基线为 2025-11-25。\n'
+  exit 1
+fi
+
 for milestone in M0 M1 M2 M3 M4 M5 M6; do
   if ! grep -REq --include="*.md" "$milestone" docs; then
     printf '能力里程碑缺失：%s\n' "$milestone"

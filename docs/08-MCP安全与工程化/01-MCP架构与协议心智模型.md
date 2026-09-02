@@ -36,5 +36,5 @@ Tool 表示可调用动作或动态查询；Resource 表示由应用读取的上
 
 ## 6. 验收与资料
 
-能解释 Host/Client/Server 责任，仓库固定协议和 SDK 版本。参考 [MCP Architecture](https://modelcontextprotocol.io/specification/2025-06-18/architecture)、[2026-07-28 版本说明](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)、[Transports](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports)。
+能解释 Host/Client/Server 责任，仓库固定协议和 SDK 版本。参考 [MCP Architecture](https://modelcontextprotocol.io/specification/2025-11-25/architecture)、[2026-07-28 版本说明](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)、[Transports](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports)。
 
