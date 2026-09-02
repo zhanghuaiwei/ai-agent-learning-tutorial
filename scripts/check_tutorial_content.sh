@@ -24,11 +24,25 @@ for file in docs/0[2-9]-*/*.md docs/1[0-1]-*/*.md; do
   fi
   line_count=$(wc -l < "$file" | tr -d ' ')
   if (( line_count >= 120 )); then
-    if ! head -n 50 "$file" | grep -q '阅读前置\|本章从哪里开始'; then
+    if ! head -n 50 "$file" | grep -Eq '阅读前置|本章从哪里开始'; then
       printf '深度章节缺少阅读前置声明：%s\n' "$file"
       missing=1
     fi
   fi
+done
+
+# 章节自述所属阶段（"本章是第 N 阶段"）必须与其所在目录编号一致，
+# 防止里程碑/专题章节错标阶段（跨章节引用其他阶段不受此规则限制）。
+for file in docs/0[2-9]-*/*.md docs/1[0-1]-*/*.md; do
+  dir_num=$(printf '%s' "$file" | sed -E 's|^docs/([0-9]+)-.*|\1|')
+  dir_num=$((10#$dir_num))
+  while IFS= read -r line; do
+    stage_num=$(printf '%s\n' "$line" | sed -E 's/.*本章是第 ([0-9]+) 阶段.*/\1/')
+    if [[ "$stage_num" =~ ^[0-9]+$ ]] && (( stage_num != dir_num )); then
+      printf '阶段编号与目录不一致：%s（自述第 %s 阶段，目录编号 %s）\n' "$file" "$stage_num" "$dir_num"
+      missing=1
+    fi
+  done < <(grep -E '本章是第 [0-9]+ 阶段' "$file" || true)
 done
 
 # 目录状态标记与实际深度一致性：

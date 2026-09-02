@@ -115,20 +115,22 @@ answer: AgentAnswer = result["structured_response"]
 
 结果读取 `result["structured_response"]`，不要再从最后一条自然语言消息手工正则解析 JSON。对千问和 DeepSeek 分别跑能力 Smoke Test：是否支持工具与结构化输出同时使用、错误响应形态、并行 Tool Calls 和流式行为，都以实际模型与官方说明为准。
 
-修复重试必须有限。连续失败后返回结构化 `MODEL_OUTPUT_INVALID`，不能无限要求模型“再试一次”。
+修复重试必须有限。连续失败后返回结构化 `E_MODEL_OUTPUT_INVALID`，不能无限要求模型“再试一次”。
 
 ## 5. Tool Error 契约
 
 把错误分成模型可修正与不可修正：
 
 ```text
-INVALID_ARGUMENT：参数格式错，可提示模型修正一次
-NOT_FOUND：对象不存在或不可见，不枚举其他租户
-CONFLICT：状态已变化，需要重新读取
-FORBIDDEN：安全终止，不让模型尝试绕过
-UPSTREAM_TIMEOUT：按读/写与幂等性决定有限重试
-INTERNAL_ERROR：对外安全摘要，详细异常只进受控日志
+E_INVALID_ARGUMENT：参数格式错，可提示模型修正一次
+E_NOT_FOUND：对象不存在或不可见，不枚举其他租户
+E_CONFLICT：状态已变化，需要重新读取
+E_FORBIDDEN：安全终止，不让模型尝试绕过
+E_UPSTREAM_TIMEOUT：按读/写与幂等性决定有限重试
+E_INTERNAL_ERROR：对外安全摘要，详细异常只进受控日志
 ```
+
+错误码沿用第 2 阶段第 2 章为 `ToolResult.code` 定下的 `E_*` 前缀约定，保证跨阶段可对照。
 
 Tool 不要把堆栈、SQL、Token 或完整内部响应交给模型。对外消息和内部诊断信息分开保存。
 

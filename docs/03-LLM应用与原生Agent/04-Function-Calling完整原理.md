@@ -6,7 +6,7 @@
 
 模型收到消息和 Tool Schema → 输出工具名与参数 → 应用校验参数与权限 → 执行工具 → 把结果作为 Tool Message 回传 → 模型生成最终回答或继续调用。模型不会因为生成了工具调用就自动拥有系统权限。
 
-Tool 描述应写清：用途、何时使用/不使用、参数单位、数据新鲜度、副作用、可能错误。名称采用动词加对象，如 `get_equipment_alarm`；不要把十种互斥行为塞进一个万能 Tool。
+Tool 描述应写清：用途、何时使用/不使用、参数单位、数据新鲜度、副作用、可能错误。名称采用动词加对象——第 2 阶段 `tools.py` 的三个契约已示范：`search_manual`、`get_alarm`、`create_work_order_draft`；不要把十种互斥行为塞进一个万能 Tool。
 
 ## 2. Tool 分级
 
@@ -21,7 +21,7 @@ Tool 描述应写清：用途、何时使用/不使用、参数单位、数据�
 
 ## 3. 项目任务
 
-手写 `ToolRegistry`：注册 Schema、执行函数、权限、超时、副作用等级。实现只读查询与“创建草稿”，拒绝未知工具和额外参数。
+手写 `ToolRegistry`：注册 Schema、执行函数、权限、超时、副作用等级，包装第 2 阶段 `tools.py` 已实现的三个内存工具（`search_manual`、`get_alarm`、`create_work_order_draft`），拒绝未知工具和额外参数。
 
 ## 4. 练习与答案
 

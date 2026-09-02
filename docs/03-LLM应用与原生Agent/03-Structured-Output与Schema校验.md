@@ -8,7 +8,7 @@
 2. Tool Calling：把结构作为工具参数，适合动作选择。
 3. 文本 JSON + 本地解析：兼容性最好，但最脆弱，只作降级。
 
-无论使用哪层，都要本地 Pydantic 验证。语法正确不代表业务正确：`severity="high"` 可能合法，却与证据矛盾。
+无论使用哪层，都要本地 Pydantic 验证。语法正确不代表业务正确：`severity="high"` 可能合法，却与证据矛盾。第 2 阶段第 2 章已把"LLM 输出的校验与修复"的分界留给本章——`schemas.py` 里的契约就是这里的第一批验证对象。
 
 ```python
 class Diagnosis(BaseModel):
@@ -26,7 +26,7 @@ class Diagnosis(BaseModel):
 
 ## 3. 项目任务
 
-建立 `Diagnosis`、`WorkOrderDraft`、`RouteDecision`，为缺字段、额外字段、错误枚举、伪造引用、超长文本写测试；统计首轮与修复后有效率。
+复用第 2 阶段 `schemas.py` 已有的 `WorkOrderDraft` 契约，新建 `Diagnosis` 与 `RouteDecision`；为缺字段、额外字段、错误枚举、伪造引用、超长文本写测试；统计首轮与修复后有效率。
 
 ## 4. 练习与答案
 
