@@ -16,6 +16,27 @@ for file in docs/0[2-9]-*/*.md docs/10-*/*.md docs/11-*/*.md; do
   fi
 done
 
+# 目录状态标记与实际深度一致性：
+# 目录中标记为 已完成/里程碑 的章节，正文深度不得低于 120 行（大纲章节不受限）。
+catalog="docs/01-总览与使用方式/04-完整教程目录.md"
+
+while IFS= read -r line; do
+  fname=$(printf '%s\n' "$line" | sed -E 's/^[0-9]+\. `([^`]+\.md)`.*/\1/')
+  if printf '%s\n' "$line" | grep -qE '`(已完成|里程碑)`'; then
+    file=$(find docs -name "$fname" -print -quit)
+    if [[ -z "$file" ]]; then
+      printf '目录标记为完成，但找不到文件：%s\n' "$fname"
+      missing=1
+      continue
+    fi
+    line_count=$(wc -l < "$file" | tr -d ' ')
+    if (( line_count < 120 )); then
+      printf '目录标记为已完成/里程碑但深度不足（%s 行 < 120）：%s\n' "$line_count" "$file"
+      missing=1
+    fi
+  fi
+done < <(grep -E '^[0-9]+\. `[^`]+\.md`' "$catalog")
+
 job_audit_chapters=(
   "docs/01-总览与使用方式/08-岗位能力再审计.md"
   "docs/02-Python-Agent后端基础/07-Redis任务队列与后台作业可靠性.md"
