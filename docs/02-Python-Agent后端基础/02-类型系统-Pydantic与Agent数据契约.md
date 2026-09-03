@@ -3,11 +3,43 @@
 > 所属阶段：第 2 周  
 > 预计用时：5～6 小时  
 > 项目产出：带运行时校验的数据契约、`ModelGateway` 接口与离线可测的 Fake 网关  
+> 动手方式：不新建项目——回到第 1 章的 `agent-service` 目录继续写代码，新建 5 个文件、重构 1 个文件，`main.py` 零修改  
 > 资料验证日期：2026-09-02
 
 ## 1. 本章从哪里开始
 
-第 1 章结束时，`agent-service` 里真正在工作的对象只有这几个：
+不新建项目。你回到第 1 章结束时的工作目录 `agent-service`，本章的全部动手动作就一组：
+
+| 文件 | 动作 | 内容 |
+| --- | --- | --- |
+| `src/agent_service/schemas.py` | 新建 | `ChatResult` 迁入 Pydantic + 领域模型 + 工具 IO 模型 |
+| `src/agent_service/gateway.py` | 重构 | 删 dataclass 定义、抽 `_build_client`、定义 `ModelGateway` Protocol |
+| `src/agent_service/tools.py` | 新建 | 三个内存工具实现 |
+| `src/agent_service/fakes.py` | 新建 | `FakeGateway` 离线测试替身 |
+| `tests/test_schemas.py`、`tests/test_gateway_fake.py` | 新建 | 第一批 11 个测试，`uv run pytest` 全绿 |
+
+`config.py` 与 `main.py` 一行不改——这是本章最重要的验收信号：**换骨架，不换行为**。跑完本章再执行 `uv run python -m agent_service.main`，输出和第 1 章完全一致。
+
+改完后目录长这样（对照第 1 章 §5 的最小结构，变化一目了然）：
+
+```text
+agent-service/                        # 本章结束时
+├── pyproject.toml                    # 追加 pytest 依赖与配置
+├── uv.lock
+├── src/agent_service/
+│   ├── __init__.py
+│   ├── config.py                     # 不动
+│   ├── schemas.py                    # 新增：数据契约
+│   ├── gateway.py                    # 重构：Protocol + 客户端注入
+│   ├── tools.py                      # 新增：内存工具
+│   ├── fakes.py                      # 新增：测试替身
+│   └── main.py                       # 不动
+└── tests/                            # 第 1 章预留的空目录，现在启用
+    ├── test_schemas.py               # 新增：8 个非法输入测试
+    └── test_gateway_fake.py          # 新增：3 个网关契约测试
+```
+
+动手前先盘点现状。第 1 章结束时，`agent-service` 里真正在工作的对象只有这几个：
 
 | 对象 | 所在文件 | 类型 |
 | --- | --- | --- |
@@ -454,21 +486,22 @@ def create_work_order_draft(payload: CreateWorkOrderDraftInput) -> ToolResult:
 
 注意 `create_work_order_draft` 的幂等分支：内存版用字典模拟“执行方识别重复请求”，生产环境会是数据库唯一约束或 Redis 键，但**契约行为从第一天就固定**。
 
-非法输入在这层怎么处理？入口即校验：
+非法输入在这层怎么处理？入口即校验。以 `search_manual` 为例，给“从外部字典进来的调用”包一层：
 
 ```python
-def safe_tool_call(payload_dict: dict) -> ToolResult:
-    """工具边界：先校验再执行，校验失败转稳定错误码。"""
-    from pydantic import ValidationError
+from pydantic import ValidationError
 
+
+def safe_search_manual(raw: dict) -> ToolResult:
+    """工具边界：先校验再执行，校验失败转稳定错误码。"""
     try:
-        # 由调用方决定用哪个 Input 模型，这里只演示转换逻辑
-        raise ValidationError("demo", SearchManualInput)
+        payload = SearchManualInput.model_validate(raw)
     except ValidationError as exc:
         return _envelope(False, "E_INVALID_ARGUMENT", {"errors": exc.errors()})
+    return search_manual(payload)
 ```
 
-实际工程里不需要 `safe_tool_call` 这种转发函数——每个工具函数开头直接 `try: payload = XxxInput.model_validate(raw)`。要点是：**堆栈不出边界，错误码必须出边界**。
+这段代码可以直接运行验证：传入干净的字典走正常检索；传入 `{"equipment_id": "eq-01", "keywords": [], "top_k": 99}` 会拿到 `E_INVALID_ARGUMENT` 信封，而不是一个带堆栈的异常。实际工程里这层 `try/except` 直接写在每个工具函数开头（`payload = XxxInput.model_validate(raw)`），不需要单独的转发函数。要点是：**堆栈不出边界，错误码必须出边界**。
 
 ## 7. ModelGateway Protocol 与网关重构
 
@@ -786,7 +819,15 @@ class TestCreateWorkOrderDraft:
 uv run pytest
 ```
 
-9 个测试（含 3 个网关测试）全部通过，**真实 API 调用次数为 0**。这就是第 1 章 §11.1 承诺的“普通自动化测试使用 Fake”落到实处的样子。
+终端输出长这样（11 个点对应 11 个测试）：
+
+```text
+$ uv run pytest
+...........
+====================== 11 passed in 0.05s ======================
+```
+
+8 个非法输入测试证明校验生效，3 个网关测试证明 Fake 可用，合计 11 个全部通过，**真实 API 调用次数为 0**。这就是第 1 章 §11.1 承诺的“普通自动化测试使用 Fake”落到实处的样子——它也是本章的“完成画面”：以后每一章结束时，终端里都应该看到这样一行绿色的 `passed`。
 
 ## 9. 契约演进规则
 
